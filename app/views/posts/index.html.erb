@@ -1,0 +1,11 @@
+Welcome <%= current_user.instagram_username %> !
+<%= button_to "Fetch Instagram Posts", posts_fetch_instagram_path, method: :get, data: { turbo: false } %>
+<%= button_to "Delete Instagram Posts", posts_destroy_path, method: :delete, data: { turbo: false } %>
+<%= button_to "Sign out", destroy_user_session_path, method: :delete, data: { turbo: false } %>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= image_tag post.image_url, alt: post.caption, size: '250x250' %>
+    <p><%= post.caption %></p>
+  </div>
+<% end %>
